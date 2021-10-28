@@ -1,3 +1,3 @@
-import 'package:music_app/views/Utils/page_manager.dart';
+import 'package:music_app/Utils/page_manager.dart';
 
 PageManager pageManager = PageManager();
