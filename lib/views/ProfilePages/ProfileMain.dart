@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/const.dart';
+
+import 'AccoutDetails.dart';
+import 'FAQS.dart';
+import 'TermsCondition.dart';
 
 class ProfileMain extends StatefulWidget {
   ProfileMain({Key? key}) : super(key: key);
@@ -12,7 +15,15 @@ class _ProfileMainState extends State<ProfileMain> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.black,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.orange,
+            Colors.black,
+          ],
+        )),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -20,20 +31,6 @@ class _ProfileMainState extends State<ProfileMain> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 150,
-                width: MediaQuery.of(context).size.width * 0.5,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Colors.orange,
-                    Colors.black,
-                  ],
-                )),
-              ),
-
               //title
               Padding(
                 padding: const EdgeInsets.only(left: 32, top: 20),
@@ -46,56 +43,79 @@ class _ProfileMainState extends State<ProfileMain> {
               ),
 
               //buttons
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 32,
-                  right: 32,
-                  top: 30,
+              InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 32,
+                    right: 32,
+                    top: 30,
+                  ),
+                  child: Text("Account details",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins')),
                 ),
-                child: Text("Account details",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontFamily: 'Poppins')),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AccountDetails()));
+                },
               ),
               divider(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 32,
-                  right: 32,
-                  top: 20,
+              InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 32,
+                    right: 32,
+                    top: 20,
+                  ),
+                  child: Text("My music preferences",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins')),
                 ),
-                child: Text("My music preferences",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontFamily: 'Poppins')),
+                onTap: () {},
               ),
               divider(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 32,
-                  right: 32,
-                  top: 20,
+              InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 32,
+                    right: 32,
+                    top: 20,
+                  ),
+                  child: Text("FAQ's",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins')),
                 ),
-                child: Text("FAQ's",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontFamily: 'Poppins')),
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Faq()));
+                },
               ),
               divider(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 32,
-                  right: 32,
-                  top: 20,
+              InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 32,
+                    right: 32,
+                    top: 20,
+                  ),
+                  child: Text("Terms and conditions",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins')),
                 ),
-                child: Text("Terms and conditions",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontFamily: 'Poppins')),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Terms()));
+                },
               ),
               divider(),
               Padding(
