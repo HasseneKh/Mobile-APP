@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:music_app/const.dart';
 import 'package:music_app/views/ProfilePages/ProfileMain.dart';
+import 'package:music_app/views/Search.dart';
 import 'package:music_app/views/playerPage.dart';
 
 import 'Utils/page_manager.dart';
@@ -35,8 +37,6 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: MyApp.title,
       theme: ThemeData(
-        backgroundColor: Colors.black,
-        //primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
@@ -44,31 +44,33 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.black,
           title: Text(MyApp.title),
         ),
-        bottomNavigationBar: Card(
-          elevation: 2,
-          child: Container(
-            height: 70,
+        bottomNavigationBar: Container(
+          color: Colors.black,
+          height: 70,
+          //width: MediaQuery.of(context).size.width - 100,
+          child: Card(
             color: Colors.black,
+            elevation: 3,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   /// Home
-                  bnt('Home', 0, Icons.home),
+                  bnt('Home', 0, 'assets/icons/home.svg'),
 
                   /// Search
-                  bnt('Search', 1, Icons.search),
+                  bnt('Search', 1, 'assets/icons/search.svg'),
 
                   /// Profile
-                  bnt('Profile', 2, Icons.person)
+                  bnt('Profile', 2, 'assets/icons/profile.svg')
                 ]),
           ),
         ),
-        body: [PlayerPage(), ProfileMain(), ProfileMain()][_currentIndex],
+        body: [PlayerPage(), Search(), ProfileMain()][_currentIndex],
       ),
     );
   }
 
-  Widget bnt(String text, int num, IconData icon) {
+  Widget bnt(String text, int num, String path) {
     return InkWell(
       onTap: () {
         setState(() {
@@ -81,14 +83,16 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                color: _currentIndex != num ? Colors.white : Colors.orange,
+              SvgPicture.asset(
+                path,
+                color: _currentIndex != num ? Colors.white : yello,
+                width: 40,
+                height: 40,
               ),
               Text(
                 text,
                 style: TextStyle(
-                  color: _currentIndex != num ? Colors.white : Colors.orange,
+                  color: _currentIndex != num ? Colors.white : yello,
                 ),
               ),
             ]),
