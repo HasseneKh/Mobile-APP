@@ -11,6 +11,7 @@ class PlayButton extends StatelessWidget {
       valueListenable: pageManager.playButtonNotifier,
       builder: (_, value, __) {
         switch (value) {
+          //load
           case ButtonState.loading:
             return Container(
               margin: EdgeInsets.all(8.0),
