@@ -3,8 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:music_app/const.dart';
 import 'package:music_app/views/ProfilePages/ProfileMain.dart';
 import 'package:music_app/views/Search.dart';
-import 'package:music_app/views/playerPage.dart';
+import 'package:music_app/views/HomePage.dart';
 
+import 'Utils/GradientBackGround.dart';
 import 'Utils/page_manager.dart';
 
 void main() {
@@ -12,7 +13,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  static final title = 'IlloMusic';
+  static final title = 'IllioMusic';
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -37,9 +38,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: MyApp.title,
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
@@ -66,7 +65,11 @@ class _MyAppState extends State<MyApp> {
                 ]),
           ),
         ),
-        body: [PlayerPage(), Search(), ProfileMain()][_currentIndex],
+        body:
+            //GradientBackground(
+            //child:
+            [HomePage(), Search(), ProfileMain()][_currentIndex],
+        //)
       ),
     );
   }

@@ -14,15 +14,15 @@ class _EmailUpdateState extends State<EmailUpdate> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Colors.orange,
-                Colors.black,
-              ],
-            )),
+            // decoration: BoxDecoration(
+            //     gradient: LinearGradient(
+            //   begin: Alignment.topRight,
+            //   end: Alignment.bottomLeft,
+            //   colors: [
+            //     Colors.orange,
+            //     Colors.black,
+            //   ],
+            // )),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(

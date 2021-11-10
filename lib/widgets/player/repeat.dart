@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:music_app/Utils/notifiers/repeat_button_notifier.dart';
 
 import '../../const.dart';
@@ -10,23 +11,39 @@ class RepeatButton extends StatelessWidget {
     return ValueListenableBuilder<RepeatState>(
       valueListenable: pageManager.repeatButtonNotifier,
       builder: (context, value, child) {
-        Icon icon;
+        SvgPicture icon;
         switch (value) {
           case RepeatState.off:
-            icon = Icon(Icons.repeat, color: Colors.grey);
+            icon = SvgPicture.asset("images/ShuffleButton.svg",
+                color: Colors.grey);
             break;
           case RepeatState.repeatSong:
-            icon = Icon(Icons.repeat_one);
+            icon = SvgPicture.asset(
+              "images/ShuffleButton.svg",
+              color: Colors.white,
+            );
             break;
           case RepeatState.repeatPlaylist:
-            icon = Icon(Icons.repeat);
+            icon = SvgPicture.asset(
+              "images/ShuffleButton.svg",
+              color: Colors.white,
+            ); //Icon(Icons.repeat);
             break;
         }
-        return IconButton(
-          icon: icon,
+        return FloatingActionButton.small(
+          elevation: 0,
+          backgroundColor: Colors.white.withOpacity(0.3),
           onPressed: pageManager.onRepeatButtonPressed,
+          child: icon,
         );
       },
     );
   }
 }
+//return  Center(
+//           child:  FloatingActionButton(
+//             elevation: 0,
+//             backgroundColor: Colors.white.withOpacity(0.3),
+//             onPressed: (isLast) ? null : pageManager.onNextSongButtonPressed,
+//             child: Icon(Icons.skip_next,size: 35,),
+//         ));

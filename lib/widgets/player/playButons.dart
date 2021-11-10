@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:music_app/Utils/notifiers/play_button_notifier.dart';
 
 import '../../const.dart';
@@ -19,17 +20,73 @@ class PlayButton extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           case ButtonState.paused:
-            return IconButton(
-              icon: Icon(Icons.play_arrow),
-              iconSize: 32.0,
-              onPressed: pageManager.play,
-            );
+            return Container(
+                height: MediaQuery.of(context).size.width * 0.2,
+                width: MediaQuery.of(context).size.width * 0.2,
+                child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(22.0)),
+                  elevation: 0,
+                  minWidth: 200.0,
+                  height: 95,
+                  color: Colors.white.withOpacity(0.3),
+                  child: Icon(
+                    Icons.play_arrow,
+                    size: 35,
+                    color: Colors.white,
+                  ),
+                  onPressed: pageManager.play,
+                )
+
+                //   FloatingActionButton.extended(
+                //   label: Icon(
+                //     Icons.play_arrow,
+                //     size: 35,
+                //   ),
+                //   elevation: 0,
+                //   backgroundColor: Colors.white.withOpacity(0.3),
+                //   onPressed: pageManager.play,
+                //
+                //   //   IconButton(
+                //   //   icon: Icon(Icons.play_arrow),
+                //   //   iconSize: 32.0,
+                //   //   onPressed: pageManager.play,
+                // )
+                );
           case ButtonState.playing:
-            return IconButton(
-              icon: Icon(Icons.pause),
-              iconSize: 32.0,
-              onPressed: pageManager.pause,
-            );
+            return Container(
+                height: MediaQuery.of(context).size.width * 0.2,
+                width: MediaQuery.of(context).size.width * 0.2,
+                child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(22.0)),
+                  elevation: 0,
+                  minWidth: 200.0,
+                  height: 95,
+                  color: Colors.white.withOpacity(0.3),
+                  child: SvgPicture.asset(
+                    "images/Pause.svg",
+                    color: Colors.white,
+                  ),
+                  onPressed: pageManager.pause,
+                ));
+
+          //
+          //   FloatingActionButton.large(
+          //   child: Icon(
+          //     Icons.pause,
+          //     size: 35,
+          //   ),
+          //   elevation: 0,
+          //   backgroundColor: Colors.white.withOpacity(0.3),
+          //
+          // ));
+
+          // IconButton(
+          //   icon: Icon(Icons.pause),
+          //   iconSize: 32.0,
+          //   onPressed: pageManager.pause,
+          // );
         }
       },
     );

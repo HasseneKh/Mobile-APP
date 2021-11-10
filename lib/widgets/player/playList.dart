@@ -7,18 +7,28 @@ class Playlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ValueListenableBuilder<List<String>>(
-        valueListenable: pageManager.playlistNotifier,
-        builder: (context, playlistTitles, _) {
-          return ListView.builder(
-            itemCount: playlistTitles.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text('${playlistTitles[index]}'),
-              );
-            },
-          );
-        },
+      child: Container(
+        height: 150,
+        child: ValueListenableBuilder<List<String>>(
+          valueListenable: pageManager.playlistNotifier,
+          builder: (context, playlistTitles, _) {
+            return ListView.builder(
+              itemCount: playlistTitles.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(
+                    '${playlistTitles[index]}',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                  subtitle: Text(
+                    '${playlistTitles[index]}',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
